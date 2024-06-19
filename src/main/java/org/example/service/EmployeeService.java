@@ -6,8 +6,11 @@ import org.example.model.Employee;
 import java.util.List;
 
 public class EmployeeService {
+    private EmployeeDAO employeeDAO;
 
-    private EmployeeDAO employeeDAO = new EmployeeDAO();
+    public EmployeeService() {
+        this.employeeDAO = new EmployeeDAO();
+    }
 
     public void saveEmployee(Employee employee) {
         employeeDAO.saveEmployee(employee);
@@ -17,5 +20,15 @@ public class EmployeeService {
         return employeeDAO.getAllEmployees();
     }
 
-    // Other service methods...
+    public Employee getEmployeeById(int id) {
+        return employeeDAO.getEmployeeById(id);
+    }
+
+    public void updateEmployee(Employee employee) {
+        employeeDAO.updateEmployee(employee);
+    }
+
+    public void deleteEmployee(int id) {
+        employeeDAO.deleteEmployee(id);
+    }
 }

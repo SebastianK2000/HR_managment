@@ -8,7 +8,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class HRServer {
-    private static final int PORT = 12345;
+    private static final int PORT = 8083;
     private static final int MAX_THREADS = 10; // Maksymalna liczba równocześnie obsługiwanych klientów
 
     public static void main(String[] args) {
