@@ -70,14 +70,21 @@ public class HRClient extends JFrame {
     }
 
     private void sendRequest(String type, String payload) {
-        if (out != null) {
+        if (out != null && in != null) {
             String request = "{\"type\": \"" + type + "\", \"payload\": \"" + payload + "\"}";
             out.println(request);
             System.out.println("Sent request to server: " + request);
 
             try {
-                String response = in.readLine();
-                System.out.println("Server response: " + response);
+                StringBuilder responseBuilder = new StringBuilder();
+                String response;
+                while ((response = in.readLine()) != null) {
+                    responseBuilder.append(response);
+                    if (!in.ready()) {
+                        break;
+                    }
+                }
+                System.out.println("Server response: " + responseBuilder.toString());
             } catch (IOException e) {
                 e.printStackTrace();
             }
